@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Average&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-container {
+  background-color: #F8F4E3;
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 4rem;
+  height: 250px;
+}
+.nav-container .logo-container {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.nav-container .logo-container .logo {
+  height: 150px;
+  transition: all 0.3s ease;
+}
+.nav-container .logo-container .logo:hover {
+  transform: scale(1.2);
+}
+.nav-container .buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  height: 100%;
+}
+.nav-container .buttons-container .nav-button {
+  color: #FF9F1C;
+  font-family: "Audiowide", sans-serif;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 2rem 0rem 2rem 0rem;
+  transition: all 0.3s ease;
+}
+.nav-container .buttons-container .nav-button:hover {
+  transform: scale(2);
+  background-color: #FF9F1C;
+  color: white;
+}
+
+.hero-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("../img/Hero.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 696px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.hero-container a {
+  margin-bottom: 5rem;
+  color: white;
+  font-family: "Audiowide", sans-serif;
+  font-size: 3rem;
+  border-radius: 2rem 0rem 2rem 0rem;
+  text-decoration: none;
+  background-color: #FF9F1C;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+}
+.hero-container a:hover {
+  transform: scale(1.1);
+  background-color: white;
+  color: #FF9F1C;
+}
+
+.cards-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 8rem 0rem;
+  background-color: #F8F4E3;
+}
+.cards-section h1 {
+  color: #FF9F1C;
+  font-family: "Audiowide", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+.cards-section .cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0rem 4rem;
+}
+.cards-section .cards-container .card {
+  height: 575px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.375rem solid #3FBCCE;
+  border-radius: 2.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.cards-section .cards-container .card:hover {
+  transform: scale(1.05);
+}
+.cards-section .cards-container .card div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #1D431E;
+  font-family: "Audiowide", sans-serif;
+  font-size: 1.5rem;
+  gap: 1rem;
+}
+.cards-section .cards-container .card div h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.cards-section .cards-container .card div p {
+  font-family: "Average", serif;
+  padding: 0rem 1rem;
+}
+
+footer {
+  background-color: #FF9F1C;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 8rem;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer div img {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+footer div img:hover {
+  transform: scale(1.2);
+}
+footer .icons-container {
+  gap: 4rem;
+}
+footer .icons-container svg {
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+footer .icons-container svg:hover {
+  transform: scale(1.2);
+}
+footer a {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-family: "Audiowide", sans-serif;
+  font-size: 3rem;
+  transition: all 0.3s ease;
+}
+footer a:hover {
+  transform: scale(1.1);
+  color: #3FBCCE;
+}
+
+/*# sourceMappingURL=style.css.map */
