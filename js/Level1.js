@@ -11,73 +11,73 @@ export default class Scene1 extends Phaser.Scene {
   constructor() {
     super('Level1');
     this.personaje = new Personaje();
-    this.died = false;
+    this.died = false;E
     this.livesIndicators = [];
     this.gotas = 0;
   }
 
   preload() {
 
-    this.load.json('levelData', './ProyectoInteractivas1/data/levelData.json');
+    this.load.json('levelData', '../data/levelData.json');
 
 
-    this.load.image('background', '../ProyectoInteractivas1/img/assets/background.png');
-    this.load.image('ground', '../ProyectoInteractivas1/img/assets/ground.png');
-    this.load.image('platform1', '../ProyectoInteractivas1/img/assets/platform1.png');
-    this.load.image('platform2', '../ProyectoInteractivas1/img/assets/platform2.png');
-    this.load.image('platform3', '../ProyectoInteractivas1/img/assets/platform3.png');
-    this.load.image('platform4', '../ProyectoInteractivas1/img/assets/platform4.png');
-    this.load.image('win', '../ProyectoInteractivas1/img/assets/Goal.png');
-    this.load.spritesheet('player', './ProyectoInteractivas1/img/assets/abeja-spritesheet.png', {
+    this.load.image('background', 'F://valfer18.github.io/ProyectoInteractivas1/img/assets/background.png');
+    this.load.image('ground', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/ground.png');
+    this.load.image('platform1', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform1.png');
+    this.load.image('platform2', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform2.png');
+    this.load.image('platform3', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform3.png');
+    this.load.image('platform4', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform4.png');
+    this.load.image('win', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/Goal.png');
+    this.load.spritesheet('player', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/abeja-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('playerFlying', './ProyectoInteractivas1/img/assets/abeja-volando-spritesheet.png', {
+    this.load.spritesheet('playerFlying', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/abeja-volando-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('playerIdle', './ProyectoInteractivas1/img/assets/abeja-idle-spritesheet.png', {
+    this.load.spritesheet('playerIdle', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/abeja-idle-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('miel', './ProyectoInteractivas1/img/assets/miel-spritesheet.png', {
+    this.load.spritesheet('miel', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/miel-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
 
-    this.load.spritesheet('dieFlying', './ProyectoInteractivas1/img/assets/abeja-muriendo-volando-spritesheet.png', {
+    this.load.spritesheet('dieFlying', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/abeja-muriendo-volando-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('die', './ProyectoInteractivas1/img/assets/abeja-muriendo-spritesheet.png', {
+    this.load.spritesheet('die', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/abeja-muriendo-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('live', './ProyectoInteractivas1/img/assets/vidas-spritesheet.png', {
+    this.load.spritesheet('live', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/vidas-spritesheet.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
       spacing: 0
     });
 
-    this.load.spritesheet('liveIndicator', './ProyectoInteractivas1/img/assets/vida.png', {
+    this.load.spritesheet('liveIndicator', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/vida.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
       spacing: 0
-    }); this.load.spritesheet('gota', './ProyectoInteractivas1/img/assets/sprite_gota.png', {
+    }); this.load.spritesheet('gota', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/sprite_gota.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
