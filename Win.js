@@ -22,7 +22,7 @@ export default class SceneWin extends Phaser.Scene {
         this.scene.start('Level1');
       } else {
         this.scene.stop('Win');
-        window.location.replace('/');
+        window.location.replace('https://valfer18.github.io/ProyectoInteractivas1/index.html');
       }
     }, 2000);
   }
