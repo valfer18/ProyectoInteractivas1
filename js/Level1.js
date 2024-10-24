@@ -11,7 +11,7 @@ export default class Scene1 extends Phaser.Scene {
   constructor() {
     super('Level1');
     this.personaje = new Personaje();
-    this.died = false;E
+    this.died = false;
     this.livesIndicators = [];
     this.gotas = 0;
   }
