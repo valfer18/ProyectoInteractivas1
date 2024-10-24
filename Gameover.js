@@ -3,7 +3,7 @@ export default class SceneFinal extends Phaser.Scene {
     super('Gameover')
   }
   preload() {
-    this.load.image('gameover', '../ProyectoInteractivas1/img/assets/Gameover.png');
+    this.load.image('gameover', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/Gameover.png');
     this.load.on('filecomplete', (key) => {
       console.log(`File loaded: ${key}`);
     });

@@ -4,7 +4,7 @@ export default class SceneWin extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('winScene', '../ProyectoInteractivas1/img/assets/Win.png');
+    this.load.image('winScene', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/Win.png');
     this.load.on('filecomplete', (key) => { //Generado por ChatGPT - Solucion para que renderize una imagen con phaser
       console.log(`File loaded: ${key}`);
     });
