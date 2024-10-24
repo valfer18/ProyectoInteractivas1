@@ -6,7 +6,7 @@ export default class Scene1 extends Phaser.Scene {
   died;
   livesIndicators;
   gotas;
-
+  levelData;
 
   constructor() {
     super('Level1');
@@ -18,10 +18,10 @@ export default class Scene1 extends Phaser.Scene {
 
   preload() {
 
-    this.load.json('levelData', '../data/levelData.json');
+    this.load.json('levelData', 'https://valfer18.github.io/ProyectoInteractivas1/data/levelData.json');
 
 
-    this.load.image('background', 'F://valfer18.github.io/ProyectoInteractivas1/img/assets/background.png');
+    this.load.image('background', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/background.png');
     this.load.image('ground', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/ground.png');
     this.load.image('platform1', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform1.png');
     this.load.image('platform2', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/platform2.png');
@@ -89,9 +89,12 @@ export default class Scene1 extends Phaser.Scene {
     this.load.plugin('rexvirtualjoystickplugin', url, true);
   }
 
-  setupLevel() {
+  async setupLevel() {
     this.levelData = this.cache.json.get('levelData');
-
+    if (!this.levelData) {
+      console.error('Error loading level data');
+      return;
+    }
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
     bg.setDisplaySize(this.scale.width, this.scale.height); // Scale to match the scene size
 
@@ -369,8 +372,7 @@ export default class Scene1 extends Phaser.Scene {
 
 
 
-  create() {
-
+  async create() {
     this.timeDelay = 0;
     Animaciones.crearAnimaciones(this);
     this.cursors = this.input.keyboard.createCursorKeys();
