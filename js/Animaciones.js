@@ -1,4 +1,3 @@
-// Animaciones.js
 export default class Animaciones {
     static crearAnimaciones(scene) {
         scene.anims.create({

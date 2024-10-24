@@ -1,35 +1,12 @@
 import Personaje from "./Personaje.js";
 import Animaciones from './Animaciones.js';
-
 export default class Scene1 extends Phaser.Scene {
 
   personaje;
   died;
   livesIndicators;
   gotas;
-  mielCoordinates = [
-    { x: 450, y: 335 },
-    { x: 275, y: 560 },
-    { x: 1100, y: 560 },
-    // Agrega más coordenadas si lo necesitas
-  ];
 
-  livesCoordinates = [
-    { x: 900, y: 100 },
-    { x: 100, y: 560 },
-    // Agrega más coordenadas si lo necesitas
-  ];
-
-  gotasCoordinates = [
-    { x: 1170, y: 560 },
-    { x: 925, y: 675 },
-    { x: 1170, y: 200 },
-    { x: 25, y: 425 },
-    { x: 44, y: 560 },
-
-
-    // Agrega más coordenadas si lo necesitas
-  ];
 
   constructor() {
     super('Level1');
@@ -41,6 +18,7 @@ export default class Scene1 extends Phaser.Scene {
 
   preload() {
 
+    this.load.json('levelData', './data/levelData.json');
 
 
     this.load.image('background', '../img/assets/background.png');
@@ -48,6 +26,8 @@ export default class Scene1 extends Phaser.Scene {
     this.load.image('platform1', '../img/assets/platform1.png');
     this.load.image('platform2', '../img/assets/platform2.png');
     this.load.image('platform3', '../img/assets/platform3.png');
+    this.load.image('platform4', '../img/assets/platform4.png');
+    this.load.image('win', '../img/assets/Goal.png');
     this.load.spritesheet('player', './img/assets/abeja-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
@@ -103,13 +83,16 @@ export default class Scene1 extends Phaser.Scene {
       margin: 0,
       spacing: 0
     });
+
+
+   
   }
 
   setupLevel() {
+    this.levelData = this.cache.json.get('levelData');
 
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
     bg.setDisplaySize(this.scale.width, this.scale.height); // Scale to match the scene size
-
 
     this.blocks = this.physics.add.staticGroup();
     this.blocks.create(1450, 650, 'ground');
@@ -117,6 +100,15 @@ export default class Scene1 extends Phaser.Scene {
     this.blocks.create(50, 330, 'platform1');
     this.blocks.create(50, 500, 'platform2');
     this.blocks.create(550, 400, 'platform3');
+    this.blocks.create(1200, 275, 'platform2');
+
+    this.platform = this.add.sprite(930, 350, 'platform4');
+    this.platform.speed = 2;
+    this.platform.movingDown = true;
+    this.platform.setScale(0.3);
+    this.physics.add.existing(this.platform);
+    this.platform.body.setAllowGravity(false);
+    this.platform.body.setImmovable(true);
 
     this.mielList = this.physics.add.group({
       allowGravity: false,
@@ -134,14 +126,14 @@ export default class Scene1 extends Phaser.Scene {
     });
 
     // Crear varias pla ntas
-    this.mielCoordinates.forEach(coord => {
+    this.levelData.mielCoordinates.forEach(coord => {
       const miel = this.mielList.create(coord.x, coord.y, 'miel');
       miel.setScale(1.5);
       miel.anims.play('mielIdle');
       miel.body.setSize(40, 50); // Ajustar el tamaño del cuerpo al tamaño del sprite
     });
 
-    this.livesCoordinates.forEach(coord => {
+    this.levelData.livesCoordinates.forEach(coord => {
       const live = this.livesList.create(coord.x, coord.y, 'live');
       live.setScale(1.5);
       live.anims.play('liveIdle');
@@ -150,7 +142,7 @@ export default class Scene1 extends Phaser.Scene {
 
     });
 
-    this.gotasCoordinates.forEach(coord => {
+    this.levelData.gotasCoordinates.forEach(coord => {
       const gota = this.gotasList.create(coord.x, coord.y, 'gota');
       gota.setScale(1.5);
       gota.anims.play('gotaIdle');
@@ -165,16 +157,25 @@ export default class Scene1 extends Phaser.Scene {
     this.physics.add.existing(deadZone);
     deadZone.body.setAllowGravity(false);
 
+    const winZone = this.add.sprite(1150, 210, 'win');
+    this.physics.add.existing(winZone);
+    winZone.body.setAllowGravity(false);
+    winZone.body.setImmovable(true);
+
     this.player = this.add.sprite(25, 250, 'player', 3);
     this.physics.add.existing(this.player);
     this.player.body.collideWorldBounds = true;
+    this.physics.add.collider(this.platform, this.player);
     this.physics.add.collider(this.player, this.blocks);
     this.physics.add.collider(this.player, this.mielList, this.handleLooseCollision);
     this.physics.add.collider(this.player, this.livesList, this.handleLivesCollision);
     this.physics.add.collider(this.player, this.plants, this.handlePlantCollision);
     this.physics.add.collider(this.player, deadZone, this.handleLooseCollision);
+    this.physics.add.collider(this.player, winZone, this.handleWinCollision);
     this.physics.add.collider(this.player, this.gotasList, this.handleGotaCollision);
 
+
+   
   }
 
   handleGotaCollision = (player, gota) => {
@@ -197,6 +198,26 @@ export default class Scene1 extends Phaser.Scene {
     live.destroy();
 
   };
+
+  handleWinCollision = () => {
+    if (this.gotas == 5) {
+      this.scene.switch("Win");
+      this.restart();
+    } else {
+      this.text = this.add.text(300, 200, "Debes de conseguir todas las gotas de miel primero", {
+        fontSize: '20px',
+        fill: '#ffffff',
+        backgroundColor: '#000000',
+
+      });
+      console.log('Texto creado:', this.text);
+
+      setTimeout(() => {
+        this.text.destroy();
+
+      }, 500);
+    }
+  }
 
   handleLooseCollision = () => {
     if (this.time.now > this.timeDelay && !this.die) {
@@ -264,14 +285,25 @@ export default class Scene1 extends Phaser.Scene {
 
 
   update() {
+
+    if (this.platform.movingDown) {
+      this.platform.y += this.platform.speed;  // Mueve hacia abajo
+    } else {
+      this.platform.y -= this.platform.speed;  // Mueve hacia arriba
+    }
+
+    // Cambiar dirección al llegar a los bordes
+    if (this.platform.y > 650) {
+      this.platform.movingDown = false;  // Cambiar a movimiento hacia arriba
+    } else if (this.platform.y < 300) {
+      this.platform.movingDown = true;  // Cambiar a movimiento hacia abajo
+    }
+
     if (this.died) {
       return;  // No hacer nada más si el personaje ha muerto
     }
 
-    if (this.gotas == 5) {
-      this.scene.switch("WinScene");
-      this.restart();
-    }
+
 
 
     const onGround = this.player.body.onFloor();
@@ -280,7 +312,7 @@ export default class Scene1 extends Phaser.Scene {
     this.player.body.setVelocityX(0);
 
     // Manejo de movimiento a la izquierda
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown ) {
 
       this.player.body.setVelocityX(-this.personaje.speed);
       this.player.flipX = true;
@@ -291,7 +323,7 @@ export default class Scene1 extends Phaser.Scene {
       }
     }
     // Manejo de movimiento a la derecha
-    else if (this.cursors.right.isDown) {
+    else if (this.cursors.right.isDown ) {
       this.player.body.setVelocityX(this.personaje.speed);
       this.player.flipX = false;
 
@@ -335,9 +367,7 @@ export default class Scene1 extends Phaser.Scene {
     Animaciones.crearAnimaciones(this);
     this.cursors = this.input.keyboard.createCursorKeys();
     this.setupLevel();
-
-    // Call the method to display life indicators
     this.updateLiveIndicators();
-    // Definir las animaciones
+
   }
 }

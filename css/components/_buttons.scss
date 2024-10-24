@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+.hero-button {
+
+    margin-bottom: 5rem;
+    color: $clr-main;
+    font-family: $ff-main;
+    font-size: $fs-lg;
+    border-radius: 2rem 0rem 2rem 0rem;
+
+    text-decoration: none;
+    background-color: $clr-secondary;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+
+
+    @include respond-to($tablet-portrait) {
+        font-size: $fs-sm;
+
+
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $clr-main;
+        color: $clr-secondary;
+    }
+
+}
+
+.button-login {
+    background-color: $clr-secondary;
+    font-family: $ff-main;
+    color: $clr-main;
+    font-size: $fs-sm;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: none;
+    border-radius: 2rem 0rem 2rem 0rem;
+    transition: all 0.3s ease;
+
+
+
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $clr-main;
+        color: $clr-secondary;
+    }
+}

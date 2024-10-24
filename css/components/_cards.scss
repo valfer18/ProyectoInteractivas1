@@ -1,0 +1,100 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+.card-level {
+    height: 575px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: .375rem solid $clr-lightblue;
+    border-radius: 2.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+
+
+    @include respond-to($tablet-portrait) {
+
+        height: 400px;
+        width: 350px;
+
+        img {
+            height: 400px;
+            width: 340px;
+        }
+    }
+
+
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: $clr-darkgreen;
+        font-family: $ff-main;
+        font-size: $fs-sm;
+        gap: 1rem;
+
+
+        h2 {
+            font-size: $fs-sm;
+            font-weight: $fw-regular;
+        }
+
+        p {
+            font-family: $ff-secondary;
+            padding: 0rem 1rem;
+        }
+    }
+}
+
+
+.card-character {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: .3rem solid $clr-green;
+    border-radius: 1rem;
+    width: 550px;
+    height: 650px;
+    gap: 4rem;
+
+
+   
+    .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 250px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+    @include respond-to($tablet-portrait) {
+        width: 350px;
+        height: 500px;
+
+        padding: 1rem;
+
+        .img-container {
+
+            height: 125px;
+
+            img {
+                transform: scale(0.5);
+            }
+
+
+        }
+    }
+}

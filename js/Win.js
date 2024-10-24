@@ -1,10 +1,11 @@
-export default class SceneFinal extends Phaser.Scene {
+export default class SceneWin extends Phaser.Scene {
   constructor() {
-    super('Gameover')
+    super('Win')
   }
+
   preload() {
-    this.load.image('gameover', '../img/assets/Gameover.png');
-    this.load.on('filecomplete', (key) => {
+    this.load.image('winScene', '../img/assets/Win.png');
+    this.load.on('filecomplete', (key) => { //Generado por ChatGPT - Solucion para que renderize una imagen con phaser
       console.log(`File loaded: ${key}`);
     });
     this.load.on('loaderror', (file) => {
@@ -13,14 +14,14 @@ export default class SceneFinal extends Phaser.Scene {
   }
 
   create() {
-    const bg = this.add.image(0, 0, 'gameover').setOrigin(0, 0);
+    const bg = this.add.image(0, 0, 'winScene').setOrigin(0, 0);
     bg.setDisplaySize(this.scale.width, this.scale.height);
 
     setTimeout(() => {
       if (confirm('Do you want to play again?')) {
         this.scene.start('Level1');
       } else {
-        this.scene.stop('Gameover');
+        this.scene.stop('Win');
         window.location.replace('/');
       }
     }, 2000);

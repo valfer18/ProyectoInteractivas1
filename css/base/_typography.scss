@@ -1,0 +1,74 @@
+@use "../abstracts/_variables" as *;
+@import '../abstracts/mixins';
+
+
+.banner-text {
+    font-family: $ff-main;
+    font-weight: $fw-regular;
+    color: $clr-main;
+    font-size: $fs-lg;
+    width: 50%;
+
+
+}
+
+@include respond-to($tablet-portrait) {
+    .banner-text {
+        font-size: $fs-xs ;
+
+    }
+}
+
+
+.section-title {
+    text-align: center;
+    color: $clr-secondary;
+    font-family: $ff-main;
+    font-size: $fs-md;
+    font-weight: $fw-regular;
+
+
+    @include respond-to($tablet-portrait) {
+        font-size: $fs-md ;
+    }
+}
+
+.character-info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    font-size: $fs-sm;
+    font-weight: $fw-regular;
+    text-align: center;
+    color: $clr-darkgreen;
+}
+
+.login-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    h1 {
+        color: $clr-lightblue;
+        font-size: $fs-lg;
+
+        @include respond-to($tablet-portrait) {
+            font-size: $fs-md;
+
+        }
+    }
+
+    h2 {
+        color: $clr-secondary;
+        font-size: $fs-md;
+
+        @include respond-to($tablet-portrait) {
+            font-size: $fs-md;
+
+        }
+    }
+}

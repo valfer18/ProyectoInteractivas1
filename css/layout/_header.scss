@@ -1,0 +1,35 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+
+.nav-container {
+    background-color: $clr-main-bg;
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 4rem;
+    height: 250px;
+
+    @include respond-to($tablet-portrait) {
+        height: 150px;
+        justify-content: center;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+
+        @include respond-to($tablet-portrait) {
+            transform: scale(0.5);
+        }
+
+        .logo {
+            height: 150px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}

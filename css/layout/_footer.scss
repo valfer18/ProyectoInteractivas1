@@ -1,0 +1,104 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+
+footer {
+    background-color: $clr-secondary;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+
+
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .icons-container {
+
+        gap: 4rem;
+
+        svg {
+            width: 60px;
+            height: 60px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+
+                transform: scale(1.2);
+            }
+        }
+
+    }
+
+    a {
+        text-decoration: none;
+        text-align: center;
+        color: $clr-main;
+        font-family: $ff-main;
+        font-size: $fs-lg;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            color: $clr-lightblue;
+        }
+    }
+
+
+    @include respond-to($tablet-portrait) {
+
+        height: 100px;
+        padding: 0;
+
+        .icons-container {
+
+            gap: 1rem;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        img {
+            width: 100px;
+
+        }
+
+        a {
+            font-size: $fs-xs ;
+        }
+
+
+    }
+
+    @include respond-to($large-desktop) {
+
+
+
+        img {
+            width: 225px;
+
+        }
+
+
+
+
+    }
+}

@@ -1,0 +1,97 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    height: 100%;
+  
+    .nav-button {
+      color: $clr-secondary;
+      font-family: $ff-main;
+      font-size: $fs-sm;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 2rem 0rem 2rem 0rem;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        transform: scale(2);
+        background-color: $clr-secondary;
+        color: $clr-main;
+      }
+    }
+  }
+  
+  .active {
+    transform: scale(2);
+    background-color: $clr-secondary;
+    color: $clr-main !important;
+  }
+  
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    align-self: center;
+  
+    span {
+      width: 2rem;
+      height: 0.25rem;
+      background: $clr-secondary;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+  
+    @include respond-to($tablet-portrait) {
+      display: flex;
+    }
+  }
+  
+  .main-nav {
+    @include respond-to($tablet-portrait) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: $clr-main;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
+      z-index: 2;
+  
+      &.open {
+        transform: translateX(0);
+      }
+    }
+  }
+  
+  .buttons-container {
+    @include respond-to($tablet-portrait) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .nav-button {
+    @include respond-to($tablet-portrait) {
+      font-size: $fs-md;
+      margin: 0.5rem 0;
+    }
+  }

@@ -1,0 +1,201 @@
+@use "../abstracts/variables" as *;
+@import '../abstracts/mixins';
+
+
+.hero-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('../img/Hero.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 696px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    @include respond-to($tablet-portrait) {
+        height: 400px;
+
+
+    }
+
+
+}
+
+.cards-section {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 8rem 0rem;
+    background-color: $clr-main-bg;
+
+
+
+    h1 {
+        color: $clr-secondary;
+        font-family: $ff-main;
+        font-size: $fs-md;
+        font-weight: $fw-regular ;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 5rem 4rem;
+        flex-wrap: wrap;
+
+        @include respond-to($phone) {
+
+            padding: 0;
+        }
+
+
+    }
+}
+
+
+.banner-container {
+    background-color: $clr-green;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 2rem;
+
+
+    .flor-polen {
+        transform: scale(0.6);
+    }
+
+
+    @include respond-to($tablet-portrait) {
+
+
+        .flor-polen {
+            width: 150px;
+
+        }
+
+
+    }
+}
+
+
+.section-container {
+
+    background-color: $clr-main-bg;
+
+
+    section {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 4rem 0rem;
+        gap: 4rem;
+
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+
+
+
+
+
+
+        }
+
+
+    }
+}
+
+
+.container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    background-color: $clr-main-bg;
+
+    @include respond-to($tablet-portrait) {
+        padding: 1rem;
+    }
+
+    .login-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 100vh;
+
+        @include respond-to($tablet-portrait) {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .login-left {
+
+            background-color: $clr-lightblue;
+            width: 50%;
+            height: fit-content;
+            border-radius: 2rem 0 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            @include respond-to($tablet-portrait) {
+                display: none;
+            }
+
+            img {
+                width: 50%;
+
+            }
+
+        }
+
+        .login-right {
+            background-color: $clr-lighterblue;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            font-family: $ff-secondary;
+            font-weight: 400;
+            padding: 4rem;
+
+            border-radius: 0 2rem 2rem 0;
+
+            @include respond-to($tablet-portrait) {
+                width: 100%;
+                font-size: $fs-sm;
+                gap: 3rem;
+                border-radius: 2rem;
+                padding: 2rem;
+                height: auto;
+
+            }
+
+
+        }
+    }
+
+}
