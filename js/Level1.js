@@ -21,63 +21,63 @@ export default class Scene1 extends Phaser.Scene {
     this.load.json('levelData', './data/levelData.json');
 
 
-    this.load.image('background', '../img/assets/background.png');
-    this.load.image('ground', '../img/assets/ground.png');
-    this.load.image('platform1', '../img/assets/platform1.png');
-    this.load.image('platform2', '../img/assets/platform2.png');
-    this.load.image('platform3', '../img/assets/platform3.png');
-    this.load.image('platform4', '../img/assets/platform4.png');
-    this.load.image('win', '../img/assets/Goal.png');
-    this.load.spritesheet('player', './img/assets/abeja-spritesheet.png', {
+    this.load.image('background', '../ProyectoInteractivas1/img/assets/background.png');
+    this.load.image('ground', '../ProyectoInteractivas1/img/assets/ground.png');
+    this.load.image('platform1', '../ProyectoInteractivas1/img/assets/platform1.png');
+    this.load.image('platform2', '../ProyectoInteractivas1/img/assets/platform2.png');
+    this.load.image('platform3', '../ProyectoInteractivas1/img/assets/platform3.png');
+    this.load.image('platform4', '../ProyectoInteractivas1/img/assets/platform4.png');
+    this.load.image('win', '../ProyectoInteractivas1/img/assets/Goal.png');
+    this.load.spritesheet('player', './ProyectoInteractivas1/img/assets/abeja-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('playerFlying', './img/assets/abeja-volando-spritesheet.png', {
+    this.load.spritesheet('playerFlying', './ProyectoInteractivas1/img/assets/abeja-volando-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('playerIdle', './img/assets/abeja-idle-spritesheet.png', {
+    this.load.spritesheet('playerIdle', './ProyectoInteractivas1/img/assets/abeja-idle-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('miel', './img/assets/miel-spritesheet.png', {
+    this.load.spritesheet('miel', './ProyectoInteractivas1/img/assets/miel-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
 
-    this.load.spritesheet('dieFlying', './img/assets/abeja-muriendo-volando-spritesheet.png', {
+    this.load.spritesheet('dieFlying', './ProyectoInteractivas1/img/assets/abeja-muriendo-volando-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('die', './img/assets/abeja-muriendo-spritesheet.png', {
+    this.load.spritesheet('die', './ProyectoInteractivas1/img/assets/abeja-muriendo-spritesheet.png', {
       frameWidth: 55,
       frameHeight: 55,
       margin: 0,
       spacing: 0
     });
-    this.load.spritesheet('live', './img/assets/vidas-spritesheet.png', {
+    this.load.spritesheet('live', './ProyectoInteractivas1/img/assets/vidas-spritesheet.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
       spacing: 0
     });
 
-    this.load.spritesheet('liveIndicator', './img/assets/vida.png', {
+    this.load.spritesheet('liveIndicator', './ProyectoInteractivas1/img/assets/vida.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
       spacing: 0
-    }); this.load.spritesheet('gota', './img/assets/sprite_gota.png', {
+    }); this.load.spritesheet('gota', './ProyectoInteractivas1/img/assets/sprite_gota.png', {
       frameWidth: 60,
       frameHeight: 60,
       margin: 0,
@@ -85,7 +85,8 @@ export default class Scene1 extends Phaser.Scene {
     });
 
 
-   
+    let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
+    this.load.plugin('rexvirtualjoystickplugin', url, true);
   }
 
   setupLevel() {
@@ -175,7 +176,14 @@ export default class Scene1 extends Phaser.Scene {
     this.physics.add.collider(this.player, this.gotasList, this.handleGotaCollision);
 
 
-   
+    this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+      x: 200,
+      y: 500,
+      radius: 50,
+      base: this.add.circle(0, 0, 30, 0x888888),
+      thumb: this.add.circle(0, 0, 15, 0xcccccc),
+    });
+    this.joystickCursors = this.joyStick.createCursorKeys();
   }
 
   handleGotaCollision = (player, gota) => {
@@ -312,7 +320,7 @@ export default class Scene1 extends Phaser.Scene {
     this.player.body.setVelocityX(0);
 
     // Manejo de movimiento a la izquierda
-    if (this.cursors.left.isDown ) {
+    if (this.cursors.left.isDown || this.joystickCursors.left.isDown) {
 
       this.player.body.setVelocityX(-this.personaje.speed);
       this.player.flipX = true;
@@ -323,7 +331,7 @@ export default class Scene1 extends Phaser.Scene {
       }
     }
     // Manejo de movimiento a la derecha
-    else if (this.cursors.right.isDown ) {
+    else if (this.cursors.right.isDown || this.joystickCursors.right.isDown) {
       this.player.body.setVelocityX(this.personaje.speed);
       this.player.flipX = false;
 
@@ -341,7 +349,7 @@ export default class Scene1 extends Phaser.Scene {
     }
 
     // Manejar el vuelo
-    if (this.cursors.up.isDown || this.cursors.space.isDown) {
+    if (this.cursors.up.isDown || this.cursors.space.isDown || this.joystickCursors.up.isDown) {
       if (onGround) {
         this.player.body.setVelocityY(-this.personaje.speed * 2); // Salto inicial al despegar
       } else {
