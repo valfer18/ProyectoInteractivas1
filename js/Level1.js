@@ -18,7 +18,7 @@ export default class Scene1 extends Phaser.Scene {
 
   preload() {
 
-    this.load.json('levelData', './data/levelData.json');
+    this.load.json('levelData', './ProyectoInteractivas1/data/levelData.json');
 
 
     this.load.image('background', '../ProyectoInteractivas1/img/assets/background.png');
