@@ -11,14 +11,14 @@ export default class Scene1 extends Phaser.Scene {
   constructor() {
     super('Level1');
     this.personaje = new Personaje();
-    this.died = false;E
+    this.died = false;
     this.livesIndicators = [];
     this.gotas = 0;
   }
 
   preload() {
 
-    this.load.json('levelData', 'https://valfer18.github.io/ProyectoInteractivas1/data/levelData.json');
+    this.load.json('levelData', '../data/levelData.json');
 
 
     this.load.image('background', 'F://valfer18.github.io/ProyectoInteractivas1/img/assets/background.png');
