@@ -11,49 +11,54 @@
 
 <header>
   <div class="nav-container">
-
     <div class="logo-container">
       <a href="/"><img class="logo" src="img/Logo1.png" alt="Logo"></a>
     </div>
 
-    <nav>
+    <button class="burger-menu" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav">
       <ul class="buttons-container">
-        <li><a class="nav-button" href="#">INICIO</a></li>
-        <li><a class="nav-button" href="#">PERSONAJES</a></li>
-        <li><a class="nav-button" href="#">RANKING</a></li>
-        <li><a class="nav-button" href="#">LOGIN</a></li>
+        <li><a class="nav-button active" href="/index.html">HOME</a></li>
+        <li><a class="nav-button" href="/characters.html">CHARACTERS</a></li>
+        <li><a class="nav-button" href="/rankings.html">RANKINGS</a></li>
+        <li><a class="nav-button" href="/login.html">LOGIN</a></li>
       </ul>
     </nav>
-
   </div>
-
 </header>
 
 
 <body>
 
   <div class="hero-container">
-    <a href="/juego.html">Play Now</a>
+    <a class="hero-button" href="/juego.html">Play Now</a>
   </div>
 
   <section class="cards-section">
     <h1>NIVELES</h1>
 
     <div class="cards-container">
-      <div class="card">
+      <div class="card-level">
         <div>
           <h2>Nivel 1</h2>
           <p>Inicia la aventura con Izzy la abeja, en busca de la última flor en el reino apícola </p>
         </div>
         <img src="img/Nivel1.webp" alt="nivel 1">
       </div>
-      <div class="card">
+      <div class="card-level">
         <div>
           <h2>Nivel 2</h2>
           <p>Con Izzy también podrás volar cuando necesites subir a lugares altos o evitar obstáculos</p>
-        </div><img src="img/Nivel2.webp" alt="nivel 2">
+        </div>
+
+        <img src="img/Nivel2.webp" alt="nivel 2">
       </div>
-      <div class="card">
+      <div class="card-level">
         <div>
           <h2>Nivel 3</h2>
           <p>Si alguno de los enemigos te toca, morirás.
@@ -68,17 +73,15 @@
 
 <footer>
   <div class="icons-container">
-    <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
-      style="color: white;">
+    <svg data-testid="geist-icon" stroke-linejoin="round" viewBox="0 0 16 16" style="color: white;">
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M0.5 0.5H5.75L9.48421 5.71053L14 0.5H16L10.3895 6.97368L16.5 15.5H11.25L7.51579 10.2895L3 15.5H1L6.61053 9.02632L0.5 0.5ZM12.0204 14L3.42043 2H4.97957L13.5796 14H12.0204Z"
         fill="currentColor"></path>
-    </svg><svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
-      style="color: white;">
+    </svg><svg data-testid="geist-icon" stroke-linejoin="round" viewBox="0 0 16 16" style="color: white;">
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M9.00319 15.9377C12.948 15.4442 16 12.0785 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 11.8172 2.67341 15.0099 6.25 15.808V10.4303H4.5V8H6.25V6.93969C6.25 4.22193 7.28461 2.96364 9.95128 2.96364C10.4559 2.96364 11.3277 3.06264 11.6854 3.16164V5.37163C11.497 5.35247 11.168 5.34289 10.7625 5.34289C9.45307 5.34289 9 5.8379 9 7.12812V8H11.5577L11.1106 10.4303H9.00319V15.9377Z"
         fill="currentColor"></path>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
         fill="white" />
@@ -88,9 +91,12 @@
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
         fill="white " />
-    </svg></div>
+    </svg>
+  </div>
   <div><img src="img/Logo2.png" class="logo" alt=""></div>
-  <a href="/signup">SIGN UP</a>
+  <a href="/signup.html">SIGN UP</a>
+
 </footer>
+<script src="js/app.js"></script>
 
 </html>
