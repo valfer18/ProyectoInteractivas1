@@ -3,7 +3,7 @@ export default class SceneFinal extends Phaser.Scene {
     super('Gameover')
   }
   preload() {
-    this.load.image('gameover', '../img/assets/Gameover.png');
+    this.load.image('gameover', 'https://valfer18.github.io/ProyectoInteractivas1/img/assets/Gameover.png');
     this.load.on('filecomplete', (key) => {
       console.log(`File loaded: ${key}`);
     });
@@ -21,7 +21,7 @@ export default class SceneFinal extends Phaser.Scene {
         this.scene.start('Level1');
       } else {
         this.scene.stop('Gameover');
-        window.location.replace('/');
+        window.location.replace('https://valfer18.github.io/ProyectoInteractivas1/index.html');
       }
     }, 2000);
   }
